@@ -4,4 +4,4 @@ dist
 .sass-cache
 .ruby-version
 app/bower_components
-test/bower_components
+app/test/bower_components

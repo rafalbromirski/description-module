@@ -7,13 +7,7 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 
 gulp.task('styles', function () {
-    var compass = require('gulp-compass');
-
-    return gulp.src('app/styles/application.scss')
-        .pipe(compass({
-          css: '.tmp/styles',
-          sass: 'app/styles'
-        }))
+    return gulp.src('app/styles/application.css')
         .pipe(gulp.dest('.tmp/styles'))
         .pipe($.size());
 });
@@ -100,17 +94,13 @@ gulp.task('serve', ['connect', 'styles'], function () {
 gulp.task('wiredep', function () {
     var wiredep = require('wiredep').stream;
 
-    gulp.src('app/styles/*.scss')
+    gulp.src('app/styles/*.css')
         .pipe(wiredep({
             directory: 'app/bower_components'
         }))
         .pipe(gulp.dest('app/styles'));
 
     gulp.src('app/*.html')
-        .pipe(wiredep({
-            directory: 'app/bower_components',
-            exclude: ['bootstrap-sass-official']
-        }))
         .pipe(gulp.dest('app'));
 });
 
@@ -128,7 +118,7 @@ gulp.task('watch', ['connect', 'serve'], function () {
         server.changed(file.path);
     });
 
-    gulp.watch('app/styles/**/*.scss', ['styles']);
+    gulp.watch('app/styles/**/*.css', ['styles']);
     gulp.watch('app/scripts/**/*.js', ['scripts']);
     gulp.watch('app/images/**/*', ['images']);
     gulp.watch('bower.json', ['wiredep']);
