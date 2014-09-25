@@ -3,6 +3,7 @@
 ### Requirements:
 1. node - download installer from `http://nodejs.org` or use `brew`
 2. bower - `npm install -g bower`
+3. gulp - `npm install -g gulp`
 
 ### Local setup:
 1. Clone repository
